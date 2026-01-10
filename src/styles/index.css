@@ -1,0 +1,216 @@
+/**
+ * DevCodeX - Global Styles
+ * 
+ * Main stylesheet that imports all style modules.
+ * Order matters: variables → reset → typography → utilities
+ */
+
+/* Import design system styles */
+@import './variables.css';
+@import './reset.css';
+
+/* Google Fonts - Inter for UI, JetBrains Mono for code */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================
+ * BASE TYPOGRAPHY
+ * ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-foreground);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+p {
+  color: var(--color-foreground-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--color-code-background);
+  color: var(--color-code-foreground);
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-4);
+  background-color: var(--color-code-background);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* ============================================
+ * UTILITY CLASSES
+ * ============================================ */
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  padding: var(--spacing-2) var(--spacing-4);
+  z-index: var(--z-tooltip);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ============================================
+ * ROOT APP CONTAINER
+ * ============================================ */
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+ * PAGE UTILITIES
+ * ============================================ */
+
+.page {
+  width: 100%;
+}
+
+.page__header {
+  margin-bottom: var(--spacing-6);
+}
+
+.page__header h1 {
+  margin-bottom: var(--spacing-2);
+}
+
+.page__header p {
+  font-size: var(--font-size-lg);
+}
+
+.page__section {
+  margin-bottom: var(--spacing-6);
+}
+
+.page__section h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-4);
+}
+
+/* ============================================
+ * LAYOUT UTILITIES
+ * ============================================ */
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-3 {
+  gap: var(--spacing-3);
+}
+
+.mt-4 {
+  margin-top: var(--spacing-4);
+}
+
+.mt-6 {
+  margin-top: var(--spacing-6);
+}
+
+.mt-8 {
+  margin-top: var(--spacing-8);
+}
+
+.mt-16 {
+  margin-top: var(--spacing-16);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-foreground-muted);
+}
+
+.text-subtle {
+  color: var(--color-foreground-subtle);
+}
+
+/* List styles */
+.list-disc {
+  list-style: disc;
+  padding-left: var(--spacing-6);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Font sizes */
+.text-5xl {
+  font-size: var(--font-size-5xl);
+}
+
+

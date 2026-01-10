@@ -1,0 +1,52 @@
+/**
+ * Spinner Component Styles
+ * 
+ * Uses GPU-accelerated transform for rotation animation.
+ */
+
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.spinner__icon {
+  animation: spinner-rotate 0.8s linear infinite;
+}
+
+/* GPU-accelerated rotation */
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+ * SIZES
+ * ======================================== */
+
+.spinner--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.spinner--md {
+  width: 24px;
+  height: 24px;
+}
+
+.spinner--lg {
+  width: 32px;
+  height: 32px;
+}
+
+/* ========================================
+ * REDUCED MOTION
+ * ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner__icon {
+    animation-duration: 1.5s;
+  }
+}

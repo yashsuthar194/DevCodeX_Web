@@ -1,0 +1,5 @@
+/* CreateQuestionPage styles */
+
+.create-question__nav {
+  margin-bottom: var(--spacing-2);
+}

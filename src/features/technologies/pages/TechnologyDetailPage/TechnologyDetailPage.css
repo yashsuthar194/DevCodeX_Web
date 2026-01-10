@@ -1,0 +1,118 @@
+/**
+ * TechnologyDetailPage Styles
+ */
+
+.technology-detail-page__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-foreground-muted);
+}
+
+.technology-detail-page__breadcrumb .breadcrumb-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.technology-detail-page__breadcrumb .breadcrumb-link:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+.technology-detail-page__breadcrumb .breadcrumb-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.technology-detail-page__card {
+  max-width: 800px;
+}
+
+.technology-detail-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.technology-detail-page__title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.technology-detail-page__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+.technology-detail-page__actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.technology-detail-page__description {
+  margin-top: var(--spacing-6);
+}
+
+.technology-detail-page__description p {
+  font-size: var(--font-size-base);
+  color: var(--color-foreground);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.technology-detail-page__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-6);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.technology-detail-page__meta-item {
+  display: flex;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+}
+
+.technology-detail-page__section h2 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .technology-detail-page__header {
+    flex-direction: column;
+  }
+
+  .technology-detail-page__actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

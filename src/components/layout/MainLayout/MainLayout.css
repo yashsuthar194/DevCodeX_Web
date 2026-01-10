@@ -1,0 +1,78 @@
+/**
+ * MainLayout Component Styles
+ */
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+ * MAIN CONTENT AREA
+ * ======================================== */
+
+.layout__main {
+  flex: 1;
+  padding-top: var(--header-height);
+  min-height: 100vh;
+  background-color: var(--color-background);
+  transition: margin-left var(--transition-normal);
+}
+
+/* Desktop: account for sidebar */
+@media (min-width: 769px) {
+  .layout__main {
+    margin-left: var(--sidebar-width);
+  }
+}
+
+/* Content padding */
+.layout__content {
+  padding: var(--spacing-6);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Larger padding on desktop */
+@media (min-width: 769px) {
+  .layout__content {
+    padding: var(--spacing-8);
+  }
+}
+
+/* ========================================
+ * SKIP LINK (Accessibility)
+ * ======================================== */
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: var(--spacing-4);
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  z-index: var(--z-toast);
+  transition: top var(--transition-fast);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: var(--spacing-4);
+}
+
+/* ========================================
+ * REDUCED MOTION
+ * ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .layout__main {
+    transition: none;
+  }
+  
+  .skip-link {
+    transition: none;
+  }
+}

@@ -1,0 +1,149 @@
+/**
+ * Input Component Styles
+ * 
+ * Uses CSS variables from design system.
+ * GPU-accelerated focus transitions.
+ */
+
+/* Wrapper */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  width: 100%;
+}
+
+/* Label */
+.input__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-foreground);
+  margin-bottom: var(--spacing-1);
+}
+
+/* Container with icons */
+.input__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: 
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+/* Size variants */
+.input__container--sm {
+  height: 32px;
+}
+
+.input__container--md {
+  height: 40px;
+}
+
+.input__container--lg {
+  height: 48px;
+}
+
+/* Focus state - GPU friendly (box-shadow instead of outline for better control) */
+.input__container:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Error state */
+.input__container--error {
+  border-color: var(--color-destructive);
+}
+
+.input__container--error:focus-within {
+  border-color: var(--color-destructive);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* Disabled state */
+.input__container--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--color-background-muted);
+}
+
+/* Icon positioning */
+.input__container--has-left-icon .input__field {
+  padding-left: 40px;
+}
+
+.input__container--has-right-icon .input__field {
+  padding-right: 40px;
+}
+
+/* Input field */
+.input__field {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--spacing-3);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  color: var(--color-foreground);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.input__field::placeholder {
+  color: var(--color-foreground-subtle);
+}
+
+.input__field:disabled {
+  cursor: not-allowed;
+}
+
+/* Icons */
+.input__icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--color-foreground-muted);
+  pointer-events: none;
+}
+
+.input__icon--left {
+  left: var(--spacing-3);
+}
+
+.input__icon--right {
+  right: var(--spacing-3);
+}
+
+.input__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hint text */
+.input__hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-foreground-muted);
+  margin: 0;
+}
+
+/* Error text */
+.input__error {
+  font-size: var(--font-size-sm);
+  color: var(--color-destructive);
+  margin: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .input__container {
+    transition: none;
+  }
+}

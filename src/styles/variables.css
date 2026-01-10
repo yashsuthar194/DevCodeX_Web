@@ -1,0 +1,355 @@
+/**
+ * DevCodeX Design System - CSS Variables
+ * 
+ * Premium color palette with light and dark theme support.
+ * Uses HSL for easy manipulation and consistency.
+ * 
+ * Usage:
+ * - All colors are defined as CSS custom properties
+ * - Theme switching is handled via [data-theme] attribute on :root
+ * - Default theme is light, dark theme activates with [data-theme="dark"]
+ * 
+ * @see docs/architecture/theming.md for detailed documentation
+ */
+
+:root {
+  /* ========================================
+   * COLOR SCALES - Premium Palette
+   * ======================================== */
+
+  /* Primary - Deep Indigo (Premium, Professional) */
+  --color-primary-50: 238 242 255; /* #eef2ff */
+  --color-primary-100: 224 231 255; /* #e0e7ff */
+  --color-primary-200: 199 210 254; /* #c7d2fe */
+  --color-primary-300: 165 180 252; /* #a5b4fc */
+  --color-primary-400: 129 140 248; /* #818cf8 */
+  --color-primary-500: 99 102 241; /* #6366f1 */
+  --color-primary-600: 79 70 229; /* #4f46e5 */
+  --color-primary-700: 67 56 202; /* #4338ca */
+  --color-primary-800: 55 48 163; /* #3730a3 */
+  --color-primary-900: 49 46 129; /* #312e81 */
+  --color-primary-950: 30 27 75; /* #1e1b4b */
+
+  /* Secondary - Slate (Neutral, Sophisticated) */
+  --color-secondary-50: 248 250 252; /* #f8fafc */
+  --color-secondary-100: 241 245 249; /* #f1f5f9 */
+  --color-secondary-200: 226 232 240; /* #e2e8f0 */
+  --color-secondary-300: 203 213 225; /* #cbd5e1 */
+  --color-secondary-400: 148 163 184; /* #94a3b8 */
+  --color-secondary-500: 100 116 139; /* #64748b */
+  --color-secondary-600: 71 85 105; /* #475569 */
+  --color-secondary-700: 51 65 85; /* #334155 */
+  --color-secondary-800: 30 41 59; /* #1e293b */
+  --color-secondary-900: 15 23 42; /* #0f172a */
+  --color-secondary-950: 2 6 23; /* #020617 */
+
+  /* Accent - Emerald (Success, Growth) */
+  --color-accent-50: 236 253 245; /* #ecfdf5 */
+  --color-accent-100: 209 250 229; /* #d1fae5 */
+  --color-accent-200: 167 243 208; /* #a7f3d0 */
+  --color-accent-300: 110 231 183; /* #6ee7b7 */
+  --color-accent-400: 52 211 153; /* #34d399 */
+  --color-accent-500: 16 185 129; /* #10b981 */
+  --color-accent-600: 5 150 105; /* #059669 */
+  --color-accent-700: 4 120 87; /* #047857 */
+  --color-accent-800: 6 95 70; /* #065f46 */
+  --color-accent-900: 6 78 59; /* #064e3b */
+  --color-accent-950: 2 44 34; /* #022c22 */
+
+  /* Warning - Amber */
+  --color-warning-50: 255 251 235; /* #fffbeb */
+  --color-warning-100: 254 243 199; /* #fef3c7 */
+  --color-warning-200: 253 230 138; /* #fde68a */
+  --color-warning-300: 252 211 77; /* #fcd34d */
+  --color-warning-400: 251 191 36; /* #fbbf24 */
+  --color-warning-500: 245 158 11; /* #f59e0b */
+  --color-warning-600: 217 119 6; /* #d97706 */
+  --color-warning-700: 180 83 9; /* #b45309 */
+  --color-warning-800: 146 64 14; /* #92400e */
+  --color-warning-900: 120 53 15; /* #78350f */
+  --color-warning-950: 69 26 3; /* #451a03 */
+
+  /* Error - Rose */
+  --color-error-50: 255 241 242; /* #fff1f2 */
+  --color-error-100: 255 228 230; /* #ffe4e6 */
+  --color-error-200: 254 205 211; /* #fecdd3 */
+  --color-error-300: 253 164 175; /* #fda4af */
+  --color-error-400: 251 113 133; /* #fb7185 */
+  --color-error-500: 244 63 94; /* #f43f5e */
+  --color-error-600: 225 29 72; /* #e11d48 */
+  --color-error-700: 190 18 60; /* #be123c */
+  --color-error-800: 159 18 57; /* #9f1239 */
+  --color-error-900: 136 19 55; /* #881337 */
+  --color-error-950: 76 5 25; /* #4c0519 */
+
+  /* Info - Sky */
+  --color-info-50: 240 249 255; /* #f0f9ff */
+  --color-info-100: 224 242 254; /* #e0f2fe */
+  --color-info-200: 186 230 253; /* #bae6fd */
+  --color-info-300: 125 211 252; /* #7dd3fc */
+  --color-info-400: 56 189 248; /* #38bdf8 */
+  --color-info-500: 14 165 233; /* #0ea5e9 */
+  --color-info-600: 2 132 199; /* #0284c7 */
+  --color-info-700: 3 105 161; /* #0369a1 */
+  --color-info-800: 7 89 133; /* #075985 */
+  --color-info-900: 12 74 110; /* #0c4a6e */
+  --color-info-950: 8 47 73; /* #082f49 */
+
+  /* ========================================
+   * SPACING SCALE
+   * ======================================== */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-10: 2.5rem; /* 40px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-16: 4rem; /* 64px */
+  --spacing-20: 5rem; /* 80px */
+  --spacing-24: 6rem; /* 96px */
+
+  /* ========================================
+   * TYPOGRAPHY
+   * ======================================== */
+  --font-family-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: "JetBrains Mono", "Fira Code", Consolas, Monaco,
+    "Courier New", monospace;
+
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ========================================
+   * BORDER RADIUS
+   * ======================================== */
+  --radius-none: 0;
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.375rem; /* 6px */
+  --radius-lg: 0.5rem; /* 8px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-full: 9999px;
+
+  /* ========================================
+   * SHADOWS
+   * ======================================== */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* ========================================
+   * TRANSITIONS
+   * ======================================== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ========================================
+   * Z-INDEX SCALE
+   * ======================================== */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-toast: 800;
+
+  /* ========================================
+   * BREAKPOINTS (for reference in media queries)
+   * ======================================== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ========================================
+   * LAYOUT
+   * ======================================== */
+  --header-height: 64px;
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 64px;
+}
+
+/* ============================================
+ * LIGHT THEME (Default)
+ * ============================================ */
+:root,
+[data-theme="light"] {
+  /* Semantic Colors */
+  --color-background: rgb(var(--color-secondary-50));
+  --color-background-elevated: rgb(255 255 255);
+  --color-background-muted: rgb(var(--color-secondary-100));
+
+  --color-foreground: rgb(var(--color-secondary-900));
+  --color-foreground-muted: rgb(var(--color-secondary-600));
+  --color-foreground-subtle: rgb(var(--color-secondary-400));
+
+  --color-border: rgb(var(--color-secondary-200));
+  --color-border-muted: rgb(var(--color-secondary-100));
+
+  --color-primary: rgb(var(--color-primary-600));
+  --color-primary-hover: rgb(var(--color-primary-700));
+  --color-primary-foreground: rgb(255 255 255);
+
+  --color-accent: rgb(var(--color-accent-500));
+  --color-accent-hover: rgb(var(--color-accent-600));
+  --color-accent-foreground: rgb(255 255 255);
+
+  --color-destructive: rgb(var(--color-error-500));
+  --color-destructive-hover: rgb(var(--color-error-600));
+  --color-destructive-foreground: rgb(255 255 255);
+
+  /* Status color opacity variants (for backgrounds with transparency) */
+  --color-warning-bg: rgb(var(--color-warning-500) / 0.1);
+  --color-accent-bg: rgb(var(--color-accent-500) / 0.1);
+  --color-destructive-bg: rgb(var(--color-error-500) / 0.1);
+  --color-muted-bg: rgb(var(--color-secondary-200) / 0.5);
+  --color-warning: rgb(var(--color-warning-500));
+
+  /* Component-specific */
+  --color-card: rgb(255 255 255);
+  --color-card-hover: rgb(var(--color-secondary-50));
+
+  --color-input: rgb(255 255 255);
+  --color-input-border: rgb(var(--color-secondary-300));
+  --color-input-focus: rgb(var(--color-primary-500));
+
+  /* Code blocks */
+  --color-code-background: rgb(var(--color-secondary-100));
+  --color-code-foreground: rgb(var(--color-primary-700));
+}
+
+/* ============================================
+ * DARK THEME
+ * ============================================ */
+[data-theme="dark"] {
+  /* Semantic Colors */
+  --color-background: rgb(var(--color-secondary-950));
+  --color-background-elevated: rgb(var(--color-secondary-900));
+  --color-background-muted: rgb(var(--color-secondary-800));
+
+  --color-foreground: rgb(var(--color-secondary-50));
+  --color-foreground-muted: rgb(var(--color-secondary-400));
+  --color-foreground-subtle: rgb(var(--color-secondary-500));
+
+  --color-border: rgb(var(--color-secondary-700));
+  --color-border-muted: rgb(var(--color-secondary-800));
+
+  --color-primary: rgb(var(--color-primary-400));
+  --color-primary-hover: rgb(var(--color-primary-300));
+  --color-primary-foreground: rgb(var(--color-secondary-950));
+
+  --color-accent: rgb(var(--color-accent-400));
+  --color-accent-hover: rgb(var(--color-accent-300));
+  --color-accent-foreground: rgb(var(--color-secondary-950));
+
+  --color-destructive: rgb(var(--color-error-400));
+  --color-destructive-hover: rgb(var(--color-error-300));
+  --color-destructive-foreground: rgb(var(--color-secondary-950));
+
+  /* Status color opacity variants (dark mode) */
+  --color-warning-bg: rgb(var(--color-warning-400) / 0.15);
+  --color-accent-bg: rgb(var(--color-accent-400) / 0.15);
+  --color-destructive-bg: rgb(var(--color-error-400) / 0.15);
+  --color-muted-bg: rgb(var(--color-secondary-700) / 0.5);
+  --color-warning: rgb(var(--color-warning-400));
+
+  /* Component-specific */
+  --color-card: rgb(var(--color-secondary-900));
+  --color-card-hover: rgb(var(--color-secondary-800));
+
+  --color-input: rgb(var(--color-secondary-800));
+  --color-input-border: rgb(var(--color-secondary-600));
+  --color-input-focus: rgb(var(--color-primary-400));
+
+  /* Shadows need adjustment for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4),
+    0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4),
+    0 8px 10px -6px rgb(0 0 0 / 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+
+  /* Code blocks */
+  --color-code-background: rgb(var(--color-secondary-800));
+  --color-code-foreground: rgb(var(--color-primary-300));
+}
+
+/* ============================================
+ * SYSTEM PREFERENCE (prefers-color-scheme)
+ * Only applies when no explicit theme is set
+ * ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Same as [data-theme='dark'] */
+    --color-background: rgb(var(--color-secondary-950));
+    --color-background-elevated: rgb(var(--color-secondary-900));
+    --color-background-muted: rgb(var(--color-secondary-800));
+
+    --color-foreground: rgb(var(--color-secondary-50));
+    --color-foreground-muted: rgb(var(--color-secondary-400));
+    --color-foreground-subtle: rgb(var(--color-secondary-500));
+
+    --color-border: rgb(var(--color-secondary-700));
+    --color-border-muted: rgb(var(--color-secondary-800));
+
+    --color-primary: rgb(var(--color-primary-400));
+    --color-primary-hover: rgb(var(--color-primary-300));
+    --color-primary-foreground: rgb(var(--color-secondary-950));
+
+    --color-accent: rgb(var(--color-accent-400));
+    --color-accent-hover: rgb(var(--color-accent-300));
+    --color-accent-foreground: rgb(var(--color-secondary-950));
+
+    --color-destructive: rgb(var(--color-error-400));
+    --color-destructive-hover: rgb(var(--color-error-300));
+    --color-destructive-foreground: rgb(var(--color-secondary-950));
+
+    --color-card: rgb(var(--color-secondary-900));
+    --color-card-hover: rgb(var(--color-secondary-800));
+
+    --color-input: rgb(var(--color-secondary-800));
+    --color-input-border: rgb(var(--color-secondary-600));
+    --color-input-focus: rgb(var(--color-primary-400));
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4),
+      0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4),
+      0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4),
+      0 8px 10px -6px rgb(0 0 0 / 0.3);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+
+    --color-code-background: rgb(var(--color-secondary-800));
+    --color-code-foreground: rgb(var(--color-primary-300));
+  }
+}

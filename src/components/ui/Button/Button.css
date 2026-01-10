@@ -1,0 +1,182 @@
+/**
+ * Button Component Styles
+ * 
+ * Uses CSS variables from design system.
+ * Animations use GPU-accelerated properties only.
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: 
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform 0.1s ease-out;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* GPU-accelerated press animation */
+.button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+/* ========================================
+ * SIZE VARIANTS
+ * ======================================== */
+
+.button--sm {
+  height: 32px;
+  padding: 0 var(--spacing-3);
+  font-size: var(--font-size-sm);
+}
+
+.button--md {
+  height: 40px;
+  padding: 0 var(--spacing-4);
+  font-size: var(--font-size-base);
+}
+
+.button--lg {
+  height: 48px;
+  padding: 0 var(--spacing-6);
+  font-size: var(--font-size-lg);
+}
+
+/* ========================================
+ * STYLE VARIANTS
+ * ======================================== */
+
+/* Primary */
+.button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.button--primary:not(:disabled):hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Secondary */
+.button--secondary {
+  background-color: var(--color-background-muted);
+  color: var(--color-foreground);
+}
+
+.button--secondary:not(:disabled):hover {
+  background-color: var(--color-border);
+}
+
+/* Outline */
+.button--outline {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-foreground);
+}
+
+.button--outline:not(:disabled):hover {
+  background-color: var(--color-background-muted);
+}
+
+/* Ghost */
+.button--ghost {
+  background-color: transparent;
+  color: var(--color-foreground);
+}
+
+.button--ghost:not(:disabled):hover {
+  background-color: var(--color-background-muted);
+}
+
+/* Destructive */
+.button--destructive {
+  background-color: var(--color-destructive);
+  color: var(--color-destructive-foreground);
+}
+
+.button--destructive:not(:disabled):hover {
+  background-color: var(--color-destructive-hover);
+}
+
+/* ========================================
+ * LOADING STATE
+ * ======================================== */
+
+.button--loading {
+  position: relative;
+}
+
+.button__spinner {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button__spinner-icon {
+  width: 1.25em;
+  height: 1.25em;
+  animation: button-spin 0.8s linear infinite;
+}
+
+@keyframes button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button__text--hidden {
+  visibility: hidden;
+}
+
+/* ========================================
+ * ICONS
+ * ======================================== */
+
+.button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.button__icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* ========================================
+ * REDUCED MOTION
+ * ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  
+  .button:active {
+    transform: none;
+  }
+  
+  .button__spinner-icon {
+    animation-duration: 1.5s;
+  }
+}

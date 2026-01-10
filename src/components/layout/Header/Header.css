@@ -1,0 +1,82 @@
+/**
+ * Header Component Styles
+ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-4);
+  background-color: var(--color-background-elevated);
+  border-bottom: 1px solid var(--color-border);
+  z-index: var(--z-fixed);
+}
+
+/* ========================================
+ * LEFT SECTION
+ * ======================================== */
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+/* Menu button - hidden on desktop */
+.header__menu-button {
+  display: flex;
+}
+
+@media (min-width: 769px) {
+  .header__menu-button {
+    display: none;
+  }
+}
+
+/* Logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  text-decoration: none;
+  color: var(--color-foreground);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  transition: opacity var(--transition-fast);
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+.header__logo-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary);
+}
+
+.header__logo-text {
+  /* Hide on very small screens */
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .header__logo-text {
+    display: inline;
+  }
+}
+
+/* ========================================
+ * RIGHT SECTION
+ * ======================================== */
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}

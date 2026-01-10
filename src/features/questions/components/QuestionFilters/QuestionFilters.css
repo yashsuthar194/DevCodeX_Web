@@ -1,0 +1,27 @@
+/* QuestionFilters styles */
+
+.question-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.question-filters > * {
+  min-width: 180px;
+  flex: 1;
+  max-width: 280px;
+}
+
+@media (max-width: 600px) {
+  .question-filters {
+    flex-direction: column;
+  }
+
+  .question-filters > * {
+    max-width: 100%;
+  }
+}

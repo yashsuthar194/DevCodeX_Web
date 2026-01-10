@@ -1,0 +1,68 @@
+/**
+ * TechnologyCard Component Styles
+ * 
+ * GPU-accelerated animations, theme-aware styling.
+ */
+
+.technology-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.technology-card__body {
+  padding: var(--spacing-4);
+  flex: 1;
+}
+
+.technology-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+}
+
+.technology-card__name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-foreground);
+  margin: 0;
+  line-height: var(--line-height-tight);
+  word-break: break-word;
+}
+
+.technology-card__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-foreground-muted);
+  margin: 0;
+  line-height: var(--line-height-normal);
+  /* Limit description to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.technology-card__footer {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .technology-card {
+    transition: none;
+  }
+}
+
+.text-destructive {
+  color: var(--color-destructive);
+}
+
+.text-destructive:hover {
+  color: var(--color-destructive-hover);
+  background-color: rgba(var(--color-error-500), 0.1);
+}

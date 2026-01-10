@@ -1,0 +1,66 @@
+/**
+ * SidebarLink Component Styles
+ */
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-lg);
+  color: var(--color-foreground-muted);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: 
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.sidebar-link:hover {
+  background-color: var(--color-background-muted);
+  color: var(--color-foreground);
+}
+
+.sidebar-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+/* Active state */
+.sidebar-link--active {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.sidebar-link--active:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-primary-foreground);
+}
+
+/* ========================================
+ * ICON
+ * ======================================== */
+
+.sidebar-link__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-link__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========================================
+ * TEXT
+ * ======================================== */
+
+.sidebar-link__text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

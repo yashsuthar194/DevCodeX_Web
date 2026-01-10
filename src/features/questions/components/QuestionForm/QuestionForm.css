@@ -1,0 +1,32 @@
+/* QuestionForm styles */
+
+.question-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.question-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+@media (max-width: 600px) {
+  .question-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.question-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--color-border);
+}

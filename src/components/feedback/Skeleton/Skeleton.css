@@ -1,0 +1,114 @@
+/**
+ * Skeleton Component Styles
+ * 
+ * GPU-accelerated shimmer animation using background-position.
+ */
+
+.skeleton {
+  display: block;
+  background: var(--color-background-muted);
+}
+
+/* Variants */
+.skeleton--text {
+  height: 1em;
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.skeleton--short {
+  width: 80%;
+}
+
+.skeleton--circular {
+  border-radius: var(--radius-full);
+}
+
+.skeleton--rectangular {
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+/* GPU-accelerated shimmer animation */
+.skeleton--animate {
+  background: linear-gradient(
+    90deg,
+    var(--color-background-muted) 25%,
+    var(--color-background-elevated) 50%,
+    var(--color-background-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Multiple text lines */
+.skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* Card skeleton */
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.skeleton-card__header {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+}
+
+.skeleton-card__header-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+/* Page skeleton */
+.skeleton-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.skeleton-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.skeleton-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-4);
+}
+
+/* Table row skeleton */
+.skeleton-table-row td {
+  padding: var(--spacing-3);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton--animate {
+    animation: none;
+    background: var(--color-background-muted);
+  }
+}

@@ -1,0 +1,127 @@
+/**
+ * SearchInput Component Styles
+ */
+
+.search-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: 
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.search-input:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.search-input--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--color-background-muted);
+}
+
+/* Size variants */
+.search-input--sm {
+  height: 32px;
+}
+
+.search-input--md {
+  height: 40px;
+}
+
+.search-input--lg {
+  height: 48px;
+}
+
+/* Search icon */
+.search-input__icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-left: var(--spacing-3);
+  color: var(--color-foreground-muted);
+}
+
+/* Input field */
+.search-input__field {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--spacing-3);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  color: var(--color-foreground);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.search-input__field::placeholder {
+  color: var(--color-foreground-subtle);
+}
+
+.search-input__field:disabled {
+  cursor: not-allowed;
+}
+
+/* Remove default search styling */
+.search-input__field::-webkit-search-cancel-button,
+.search-input__field::-webkit-search-decoration {
+  display: none;
+}
+
+/* Actions container */
+.search-input__actions {
+  display: flex;
+  align-items: center;
+  padding-right: var(--spacing-2);
+  min-width: 28px;
+  height: 100%;
+}
+
+/* Clear button */
+.search-input__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-foreground-muted);
+  cursor: pointer;
+  transition: 
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.search-input__clear:hover {
+  background: var(--color-background-muted);
+  color: var(--color-foreground);
+}
+
+.search-input__clear svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Spinner */
+.search-input__spinner {
+  margin-right: var(--spacing-1);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .search-input,
+  .search-input__clear {
+    transition: none;
+  }
+}

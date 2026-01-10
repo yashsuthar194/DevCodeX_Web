@@ -1,0 +1,82 @@
+/**
+ * SaveStatus Styles
+ * 
+ * GPU-optimized animations for save status indicator.
+ */
+
+.save-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  /* GPU-safe animation */
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Saving state */
+.save-status--saving {
+  color: var(--color-muted-foreground);
+}
+
+.save-status__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  /* GPU-safe animation */
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Saved state */
+.save-status--saved {
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+}
+
+.save-status__icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Error state */
+.save-status--error {
+  color: var(--color-destructive);
+  background: var(--color-destructive-bg);
+}
+
+.save-status__text {
+  font-weight: var(--font-weight-medium);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .save-status {
+    animation: none;
+  }
+  
+  .save-status__spinner {
+    animation: none;
+    border-top-color: currentColor;
+    opacity: 0.5;
+  }
+}

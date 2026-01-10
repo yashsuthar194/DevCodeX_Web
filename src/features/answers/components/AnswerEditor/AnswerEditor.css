@@ -1,0 +1,154 @@
+/**
+ * AnswerEditor Styles
+ * 
+ * GPU-optimized animations, follows design system.
+ */
+
+.answer-editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.answer-editor__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.answer-editor__info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.answer-editor__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-foreground);
+}
+
+.answer-editor__unsaved {
+  font-size: var(--font-size-xs);
+  color: var(--color-warning);
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--color-warning-bg);
+  border-radius: var(--radius-md);
+}
+
+.answer-editor__actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.answer-editor__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.answer-editor__char-count {
+  font-size: var(--font-size-xs);
+  color: var(--color-muted-foreground);
+}
+
+.answer-editor__hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-muted-foreground);
+  font-style: italic;
+}
+
+/* MDEditor theme overrides to match design system */
+.answer-editor .w-md-editor {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+  overflow: hidden;
+}
+
+.answer-editor .w-md-editor-toolbar {
+  background: var(--color-muted);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-2);
+}
+
+.answer-editor .w-md-editor-toolbar button {
+  color: var(--color-foreground);
+}
+
+.answer-editor .w-md-editor-toolbar button:hover {
+  background: var(--color-background);
+}
+
+.answer-editor .w-md-editor-content {
+  background: var(--color-background);
+}
+
+.answer-editor .w-md-editor-text-input,
+.answer-editor .w-md-editor-text-pre {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+}
+
+.answer-editor .w-md-editor-preview {
+  padding: var(--spacing-4);
+  background: var(--color-background);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .answer-editor .w-md-editor {
+  --color-canvas-default: var(--color-background);
+  --color-canvas-subtle: var(--color-muted);
+  --color-border-default: var(--color-border);
+  --color-fg-default: var(--color-foreground);
+  --color-fg-muted: var(--color-muted-foreground);
+}
+
+/* Skeleton loading state for lazy-loaded editor */
+.answer-editor__skeleton {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.answer-editor__skeleton-toolbar {
+  height: 40px;
+  background: var(--color-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.answer-editor__skeleton-content {
+  flex: 1;
+  background: linear-gradient(
+    90deg,
+    var(--color-muted) 25%,
+    var(--color-background) 50%,
+    var(--color-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Reduced motion support for skeleton */
+@media (prefers-reduced-motion: reduce) {
+  .answer-editor__skeleton-content {
+    animation: none;
+    background: var(--color-muted);
+  }
+}

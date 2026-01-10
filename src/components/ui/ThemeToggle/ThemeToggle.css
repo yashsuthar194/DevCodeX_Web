@@ -1,0 +1,58 @@
+/**
+ * ThemeToggle Component Styles
+ * 
+ * Uses GPU-accelerated transforms for icon animations.
+ */
+
+.theme-toggle__icons {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle__icon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: 
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease-out;
+}
+
+/* Sun icon states */
+.theme-toggle__icon--sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.8);
+}
+
+.theme-toggle__icon--sun.active {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Moon icon states */
+.theme-toggle__icon--moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.8);
+}
+
+.theme-toggle__icon--moon.active {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* ========================================
+ * REDUCED MOTION
+ * ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__icon {
+    transition: opacity 0.1s ease-out;
+    transform: none !important;
+  }
+  
+  .theme-toggle__icon.active {
+    transform: none !important;
+  }
+}

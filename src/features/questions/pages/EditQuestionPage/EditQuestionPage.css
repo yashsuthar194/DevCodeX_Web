@@ -1,0 +1,25 @@
+/* EditQuestionPage styles */
+
+.edit-question__nav {
+  margin-bottom: var(--spacing-2);
+}
+
+.edit-question__answer-section {
+  margin-top: var(--spacing-4);
+}
+
+.edit-question__answer-header {
+  padding: var(--spacing-4) var(--spacing-4) 0;
+}
+
+.edit-question__answer-header h2 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 var(--spacing-1) 0;
+}
+
+.edit-question__answer-hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-foreground);
+  margin: 0;
+}
