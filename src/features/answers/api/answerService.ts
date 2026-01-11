@@ -43,6 +43,12 @@ export const answerService = {
     get<AnswerDetailDto>(`${API_ENDPOINTS.answers}/${id}`),
 
   /**
+   * Get answer by Question ID (1:1 relationship)
+   */
+  getByQuestionId: (questionId: string): Promise<ApiResponse<AnswerDetailDto>> =>
+    get<AnswerDetailDto>(`${API_ENDPOINTS.answers}/${questionId}`),
+
+  /**
    * Update existing answer
    * NOTE: This is the primary method used for saving answers,
    * since Answer is created when Question is created.
