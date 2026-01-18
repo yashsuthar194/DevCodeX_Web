@@ -43,6 +43,19 @@ export interface Technology extends BaseEntity {
 }
 
 /**
+ * Technology list DTO with question count
+ * Returned from POST /technology/list endpoint
+ */
+export interface TechnologyListDto {
+  Id: string;
+  Name: string;
+  Description?: string;
+  TechnologyType: TechnologyType;
+  QuestionCount: number;
+  CreatedAt: string;
+}
+
+/**
  * Question entity
  * Stores interview questions
  */
@@ -146,6 +159,8 @@ export interface UpdateTechnologyRequest {
  * Filter options for questions list query
  */
 export interface QuestionFilters {
+  /** Search query for title */
+  query?: string;
   technologyId?: string;
   difficultyLevel?: DifficultyLevel;
 }

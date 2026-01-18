@@ -11,7 +11,8 @@ import { get, post, put, del } from '@/core/api';
 import { API_ENDPOINTS } from '@/core/config';
 import type { ApiResponse } from '@/core/api';
 import type { 
-  Technology, 
+  Technology,
+  TechnologyListDto,
   CreateTechnologyRequest, 
   UpdateTechnologyRequest,
   TechnologyListFilter 
@@ -29,9 +30,10 @@ export const technologyService = {
 
   /**
    * Get paginated list with filters (POST to /list)
+   * Returns TechnologyListDto with QuestionCount
    */
-  getList: (filter: TechnologyListFilter): Promise<ApiResponse<Technology[]>> =>
-    post<Technology[]>(`${API_ENDPOINTS.technologies}/list`, filter),
+  getList: (filter: TechnologyListFilter): Promise<ApiResponse<TechnologyListDto[]>> =>
+    post<TechnologyListDto[]>(`${API_ENDPOINTS.technologies}/list`, filter),
 
   /**
    * Get technology by ID

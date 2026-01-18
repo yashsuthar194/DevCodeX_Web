@@ -1,13 +1,13 @@
 /**
  * TechnologyDetailPage
  * 
- * Single technology view with details and edit/delete actions.
+ * Single technology view with details, edit/delete actions, and related questions list.
  */
 
 import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router';
 import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
+import { Badge, DIFFICULTY_VARIANTS, DIFFICULTY_LABELS } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Modal } from '@/components/ui/Modal';
 import { Skeleton } from '@/components/feedback/Skeleton';
@@ -16,7 +16,9 @@ import { ConfirmDialog } from '@/components/feedback/ConfirmDialog';
 import { TechnologyForm } from '../../components/TechnologyForm';
 import { useTechnology } from '../../hooks/useTechnology';
 import { useUpdateTechnology, useDeleteTechnology } from '../../hooks/useTechnologyMutations';
-import { getTechnologyTypeLabel, type CreateTechnologyRequest } from '@/types';
+import { useQuestions } from '@/features/questions/hooks';
+import { useDebounce } from '@/core/hooks';
+import { getTechnologyTypeLabel, getDifficultyOptions, type CreateTechnologyRequest, type DifficultyLevel } from '@/types';
 import './TechnologyDetailPage.css';
 
 /**
@@ -43,6 +45,26 @@ export default function TechnologyDetailPage() {
   // Modal states
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+
+  // Questions filter state
+  const [searchQuery, setSearchQuery] = useState('');
+  const [difficultyFilter, setDifficultyFilter] = useState<DifficultyLevel | undefined>(undefined);
+
+  // Debounce search query for API calls
+  const debouncedSearch = useDebounce(searchQuery, 300);
+
+  // Fetch questions for this technology with server-side search
+  const { 
+    data: questions = [], 
+    isLoading: isLoadingQuestions 
+  } = useQuestions(
+    { 
+      technologyId: id, 
+      difficultyLevel: difficultyFilter,
+      query: debouncedSearch || undefined  // Pass to API for server-side search
+    },
+    { pageIndex: 1, pageSize: 50 }
+  );
 
   // Mutations
   const updateMutation = useUpdateTechnology();
@@ -190,12 +212,100 @@ export default function TechnologyDetailPage() {
             </CardBody>
           </Card>
 
-          {/* Related Question Section - Placeholder for future */}
-          <section className="technology-detail-page__section mt-8">
-            <h2>Related Questions</h2>
-            <p className="text-muted mt-2">
-              Questions using this technology will appear here.
-            </p>
+          {/* Related Questions Section */}
+          <section className="technology-detail-page__questions mt-8">
+            <div className="technology-detail-page__questions-header">
+              <h2>
+                Related Questions
+                {!isLoadingQuestions && (
+                  <span className="technology-detail-page__questions-count">
+                    ({questions.length})
+                  </span>
+                )}
+              </h2>
+              <div className="technology-detail-page__questions-controls">
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search questions..."
+                  className="technology-detail-page__search"
+                  aria-label="Search questions"
+                />
+                <select
+                  value={difficultyFilter ?? ''}
+                  onChange={(e) => setDifficultyFilter(
+                    e.target.value ? Number(e.target.value) as DifficultyLevel : undefined
+                  )}
+                  className="technology-detail-page__select"
+                  aria-label="Filter by difficulty"
+                >
+                  <option value="">All Difficulties</option>
+                  {getDifficultyOptions().map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {isLoadingQuestions && (
+              <div className="technology-detail-page__questions-loading">
+                <Skeleton variant="rectangular" height={80} />
+                <Skeleton variant="rectangular" height={80} />
+                <Skeleton variant="rectangular" height={80} />
+              </div>
+            )}
+
+            {!isLoadingQuestions && questions.length === 0 && (
+              <EmptyState
+                title="No questions yet"
+                description="There are no questions for this technology yet."
+                action={{
+                  label: 'Add Question',
+                  onClick: () => navigate('/questions/new'),
+                }}
+              />
+            )}
+
+            {!isLoadingQuestions && questions.length > 0 && (
+              <div className="technology-detail-page__questions-list">
+                {questions.map((question) => (
+                  <Card key={question.Id} className="technology-detail-page__question-card">
+                    <CardBody>
+                      <div className="technology-detail-page__question-content">
+                        <div className="technology-detail-page__question-info">
+                          <h3 className="technology-detail-page__question-title">
+                            {question.Title}
+                          </h3>
+                          <div className="technology-detail-page__question-meta">
+                            <Badge 
+                              variant={DIFFICULTY_VARIANTS[question.DifficultyLevel]} 
+                              size="sm"
+                            >
+                              {DIFFICULTY_LABELS[question.DifficultyLevel]}
+                            </Badge>
+                            <span className="text-muted text-sm">
+                              {formatDate(question.CreatedAt)}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="technology-detail-page__question-actions">
+                          <Button
+                            variant="primary"
+                            size="sm"
+                            onClick={() => navigate(`/questions/${question.Id}`)}
+                          >
+                            View Answer
+                          </Button>
+                        </div>
+                      </div>
+                    </CardBody>
+                  </Card>
+                ))}
+              </div>
+            )}
           </section>
         </>
       )}

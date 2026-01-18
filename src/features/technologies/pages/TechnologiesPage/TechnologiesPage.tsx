@@ -20,7 +20,7 @@ import {
   useUpdateTechnology,
   useDeleteTechnology,
 } from '../../hooks/useTechnologyMutations';
-import type { Technology, CreateTechnologyRequest } from '@/types';
+import type { TechnologyListDto, CreateTechnologyRequest } from '@/types';
 import './TechnologiesPage.css';
 
 /**
@@ -32,8 +32,8 @@ export default function TechnologiesPage() {
   
   // Modal states
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [editingTechnology, setEditingTechnology] = useState<Technology | null>(null);
-  const [deletingTechnology, setDeletingTechnology] = useState<Technology | null>(null);
+  const [editingTechnology, setEditingTechnology] = useState<TechnologyListDto | null>(null);
+  const [deletingTechnology, setDeletingTechnology] = useState<TechnologyListDto | null>(null);
 
   // Mutations
   const createMutation = useCreateTechnology();
@@ -41,7 +41,8 @@ export default function TechnologiesPage() {
   const deleteMutation = useDeleteTechnology();
 
   // Handlers - memoized for stable references
-  const handleCardClick = useCallback((technology: Technology) => {
+  // Accept TechnologyListDto which is returned from getList API
+  const handleCardClick = useCallback((technology: TechnologyListDto) => {
     navigate(`/technologies/${technology.Id}`);
   }, [navigate]);
 
@@ -55,7 +56,7 @@ export default function TechnologiesPage() {
     });
   }, [createMutation]);
 
-  const handleEdit = useCallback((technology: Technology) => {
+  const handleEdit = useCallback((technology: TechnologyListDto) => {
     setEditingTechnology(technology);
   }, []);
 
@@ -74,7 +75,7 @@ export default function TechnologiesPage() {
     );
   }, [editingTechnology, updateMutation]);
 
-  const handleDelete = useCallback((technology: Technology) => {
+  const handleDelete = useCallback((technology: TechnologyListDto) => {
     setDeletingTechnology(technology);
   }, []);
 

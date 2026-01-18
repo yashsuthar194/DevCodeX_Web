@@ -19,6 +19,7 @@ const createApiFilter = (
 ): QuestionListFilter => ({
   PageIndex: pagination?.pageIndex ?? 1,
   PageSize: pagination?.pageSize ?? 10,
+  Query: filters?.query,
   TechnologyId: filters?.technologyId,
   DifficultyLevel: filters?.difficultyLevel,
 });

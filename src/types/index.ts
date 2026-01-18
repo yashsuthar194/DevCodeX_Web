@@ -16,6 +16,7 @@ export {
 export type {
   BaseEntity,
   Technology,
+  TechnologyListDto,
   Question,
   Answer,
   Asset,

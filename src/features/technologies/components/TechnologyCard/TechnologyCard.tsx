@@ -11,18 +11,18 @@ import { Card, CardBody, CardFooter } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { IconButton } from '@/components/ui/IconButton';
 import { getTechnologyTypeLabel } from '@/types';
-import type { Technology } from '@/types';
+import type { TechnologyListDto } from '@/types';
 import './TechnologyCard.css';
 
 export interface TechnologyCardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   /** Technology data to display */
-  technology: Technology;
+  technology: TechnologyListDto;
   /** Callback when card is clicked */
-  onClick?: (technology: Technology) => void;
+  onClick?: (technology: TechnologyListDto) => void;
   /** Callback when edit button is clicked */
-  onEdit?: (technology: Technology) => void;
+  onEdit?: (technology: TechnologyListDto) => void;
   /** Callback when delete button is clicked */
-  onDelete?: (technology: Technology) => void;
+  onDelete?: (technology: TechnologyListDto) => void;
   /** Show action buttons */
   showActions?: boolean;
 }
@@ -141,6 +141,15 @@ export const TechnologyCard = memo(function TechnologyCard({
             {technology.Description}
           </p>
         )}
+        
+        <div className="technology-card__stats">
+          <span className="technology-card__stat">
+            <span className="technology-card__stat-value">{technology.QuestionCount}</span>
+            <span className="technology-card__stat-label">
+              {technology.QuestionCount === 1 ? 'Question' : 'Questions'}
+            </span>
+          </span>
+        </div>
       </CardBody>
 
       {showActions && (onEdit || onDelete) && (

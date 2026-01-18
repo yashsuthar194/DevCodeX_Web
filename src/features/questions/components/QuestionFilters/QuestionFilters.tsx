@@ -1,11 +1,12 @@
 /**
  * QuestionFilters Component
  * 
- * Filter bar for questions list with technology and difficulty dropdowns.
+ * Filter bar for questions list with search, technology and difficulty filters.
  */
 
-import { useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { DifficultyLevel, QuestionFilters as FilterType } from '@/types';
+import { useDebounce } from '@/core/hooks';
 import { TechnologySelect } from '../TechnologySelect';
 import { DifficultySelect } from '../DifficultySelect';
 import './QuestionFilters.css';
@@ -18,7 +19,7 @@ export interface QuestionFiltersProps {
 }
 
 /**
- * Filter bar component for questions list.
+ * Filter bar component for questions list with search and dropdowns.
  * 
  * @example
  * ```tsx
@@ -27,6 +28,17 @@ export interface QuestionFiltersProps {
  * ```
  */
 export function QuestionFilters({ filters, onChange }: QuestionFiltersProps) {
+  // Local search state for debouncing
+  const [searchInput, setSearchInput] = useState(filters.query ?? '');
+  const debouncedSearch = useDebounce(searchInput, 300);
+
+  // Update filters when debounced search changes
+  useEffect(() => {
+    if (debouncedSearch !== filters.query) {
+      onChange({ ...filters, query: debouncedSearch || undefined });
+    }
+  }, [debouncedSearch, filters, onChange]);
+
   const handleTechnologyChange = useCallback((technologyId: string | undefined) => {
     onChange({ ...filters, technologyId });
   }, [onChange, filters]);
@@ -37,6 +49,14 @@ export function QuestionFilters({ filters, onChange }: QuestionFiltersProps) {
 
   return (
     <div className="question-filters">
+      <input
+        type="search"
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+        placeholder="Search questions..."
+        className="question-filters__search"
+        aria-label="Search questions"
+      />
       <TechnologySelect
         value={filters.technologyId}
         onChange={handleTechnologyChange}
